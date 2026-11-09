@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratório de Criptografia e Segurança</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 Laboratório de Criptografia e Segurança</h1>
+
+        <!-- ===================== 1. CRIPTOGRAFIA ===================== -->
+        <section class="card">
+            <h2>1. Criptografia por Substituição (Cifra de César)</h2>
+            <label for="textoCifra">Mensagem:</label>
+            <textarea id="textoCifra" placeholder="Digite a mensagem..."></textarea>
+
+            <label for="deslocamento">
+                Deslocamento (chave): <span id="valorDesloc">3</span>
+            </label>
+            <input type="range" id="deslocamento" min="1" max="25" value="3"
+                   oninput="document.getElementById('valorDesloc').textContent = this.value">
+
+            <div class="botoes">
+                <button id="btnCifrar">🔒 Cifrar</button>
+                <button id="btnDecifrar">🔓 Decifrar</button>
+                <button id="btnQuebrar">🕵️ Quebrar (força bruta)</button>
+                <button id="btnLimparCifra">🧹 Limpar</button>
+            </div>
+            <div class="resultado" id="resultadoCifra">Resultado aparecerá aqui...</div>
+        </section>
+
+        <!-- ===================== 2. HASH ===================== -->
+        <section class="card">
+            <h2>2. Funções Hash (Segurança de Senhas)</h2>
+            <label for="senhaHash">Digite uma senha:</label>
+            <input type="text" id="senhaHash" placeholder="Ex: minhaSenha123">
+
+            <div class="botoes">
+                <button id="btnGerarHash"># Gerar Hash</button>
+                <button id="btnCompararHash">✓ Verificar Senha</button>
+            </div>
+            <div class="resultado" id="resultadoHash">O hash aparecerá aqui...</div>
+            <div class="info">
+                💡 <strong>Boas práticas:</strong> Nunca armazene senhas em texto puro.
+                Use hash com <em>salt</em> (bcrypt, Argon2) em sistemas reais.
+                Este exemplo usa SHA-256 apenas para fins didáticos.
+            </div>
+        </section>
+
+        <!-- ===================== 3. FORÇA BRUTA ===================== -->
+        <section class="card">
+            <h2>3. Simulação de Ataque de Força Bruta</h2>
+            <label for="senhaAlvo">Senha alvo (curta para teste):</label>
+            <input type="text" id="senhaAlvo" value="abc" maxlength="4" placeholder="Ex: abc">
+
+            <label for="alfabetoForca">Alfabeto testado:</label>
+            <select id="alfabetoForca">
+                <option value="26">Apenas letras minúsculas (26)</option>
+                <option value="36">Letras minúsculas + números (36)</option>
+                <option value="52">Maiúsculas + minúsculas (52)</option>
+            </select>
+
+            <div class="botoes">
+                <button id="btnForcaBruta">⚡ Iniciar Ataque</button>
+            </div>
+            <div class="resultado" id="resultadoForca">Aguardando simulação...</div>
+            <div class="info" id="infoForca"></div>
+        </section>
+
+        <!-- ===================== 4. BOAS PRÁTICAS ===================== -->
+        <section class="card">
+            <h2>4. Boas Práticas de Segurança da Informação</h2>
+            <ul id="listaBoasPraticas"></ul>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
